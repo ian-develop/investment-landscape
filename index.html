@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jinyoung Park — Investment Landscape | Murex Partners</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#ffffff;--bg2:#f5f6f8;--border:rgba(0,0,0,0.08);--text:#1a1f2e;--dim:#6b7a8d;--accent:#0891b2;--accent-dim:rgba(8,145,178,0.08);--accent-text:#0e7490;--portfolio:#059669;--portfolio-dim:rgba(5,150,105,0.07);--portfolio-border:rgba(5,150,105,0.25);--explore:#d97706;--explore-dim:rgba(217,119,6,0.07);--explore-border:rgba(217,119,6,0.25);--concept:#7c3aed;--concept-dim:rgba(124,58,237,0.06);--concept-border:rgba(124,58,237,0.2);--pink:#c026d3;--pink-dim:rgba(192,38,211,0.06);--pink-border:rgba(192,38,211,0.2);--teal:#0f766e;--teal-dim:rgba(15,118,110,0.06);--teal-border:rgba(15,118,110,0.2);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans','Pretendard',-apple-system,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;font-size:15px;}
+  .hero{padding:64px 40px 52px;max-width:1300px;margin:0 auto;}
+  .hero-label{font-size:13px;color:var(--dim);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:10px;}
+  .hero-title{font-size:38px;font-weight:700;line-height:1.2;margin-bottom:8px;} .hero-title span{color:var(--accent-text);}
+  .tabs{max-width:1300px;margin:0 auto;padding:14px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);}
+  .tab-btn{padding:14px 16px;background:transparent;border:1px solid var(--border);border-radius:10px;color:var(--dim);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.25s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;}
+  .tab-btn.active{background:var(--accent-dim);border-color:rgba(8,145,178,0.3);color:var(--accent-text);}
+  .tab-btn small{font-size:11px;opacity:0.6;font-weight:400;}
+  .section{max-width:1300px;margin:0 auto;padding:36px 40px;display:none;} .section.active{display:block;}
+
+/* Thesis - fixed dot on line */
+.thesis-timeline{position:relative;padding-left:40px;}
+.thesis-timeline::before{content:’’;position:absolute;left:15px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(–accent),var(–concept),var(–explore));border-radius:2px;}
+.thesis-entry{position:relative;margin-bottom:48px;} .thesis-entry:last-child{margin-bottom:0;}
+.thesis-dot{position:absolute;left:-33px;top:0;width:18px;height:18px;border-radius:50%;border:2.5px solid;background:var(–bg);z-index:2;}
+.thesis-dot::after{content:’’;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;}
+.thesis-year{font-size:16px;font-weight:700;letter-spacing:2px;margin-bottom:8px;}
+.thesis-label{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:5px;display:inline-block;margin-bottom:14px;}
+.thesis-text{font-size:16px;line-height:1.9;color:#374151;max-width:820px;} .thesis-text strong{font-weight:700;}
+.thesis-entry.y2026 .thesis-dot{border-color:var(–accent);} .thesis-entry.y2026 .thesis-dot::after{background:var(–accent);} .thesis-entry.y2026 .thesis-year{color:var(–accent-text);} .thesis-entry.y2026 .thesis-label{color:var(–accent-text);background:var(–accent-dim);} .thesis-entry.y2026 .thesis-text strong{color:var(–accent-text);}
+.thesis-entry.y2024 .thesis-dot{border-color:var(–concept);} .thesis-entry.y2024 .thesis-dot::after{background:var(–concept);} .thesis-entry.y2024 .thesis-year{color:var(–concept);} .thesis-entry.y2024 .thesis-label{color:var(–concept);background:var(–concept-dim);} .thesis-entry.y2024 .thesis-text strong{color:var(–concept);}
+.thesis-entry.y2022 .thesis-dot{border-color:var(–explore);} .thesis-entry.y2022 .thesis-dot::after{background:var(–explore);} .thesis-entry.y2022 .thesis-year{color:var(–explore);} .thesis-entry.y2022 .thesis-label{color:var(–explore);background:var(–explore-dim);} .thesis-entry.y2022 .thesis-text strong{color:var(–explore);}
+
+.desktop-map{display:block;} .mobile-map{display:none;}
+.map-header,.map-row{display:grid;gap:4px;} .map-header{margin-bottom:10px;} .map-row{margin-bottom:8px;}
+.g7{grid-template-columns:164px repeat(7,1fr);}
+.chain-stage{text-align:center;padding:16px 6px 14px;border-bottom:2px solid var(–border);transition:all 0.3s;cursor:pointer;user-select:none;border-radius:8px 8px 0 0;}
+.chain-stage:hover,.chain-stage.active{border-bottom-color:var(–accent);background:var(–accent-dim);}
+.chain-stage .icon{font-size:24px;margin-bottom:5px;}
+.chain-stage .label{font-size:12px;color:var(–dim);font-weight:600;line-height:1.35;white-space:pre-line;}
+.chain-stage:hover .label,.chain-stage.active .label{color:var(–accent-text);}
+.row-label{display:flex;flex-direction:column;justify-content:center;padding-right:14px;border-right:1px solid var(–border);}
+.row-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:3px 9px;border-radius:4px;width:fit-content;margin-bottom:5px;}
+.row-label .sub{font-size:12px;color:var(–dim);font-weight:500;}
+.cell{padding:4px;display:flex;flex-direction:column;gap:5px;transition:opacity 0.3s;}
+.row-portfolio .cell .card{min-height:88px;} .row-scouting .cell .card{min-height:88px;}
+.col-dimmed .cell{opacity:0.12;} .col-dimmed .cell.col-active{opacity:1;}
+
+.card{padding:10px 12px;border-radius:10px;cursor:pointer;transition:all 0.25s;position:relative;display:flex;flex-direction:column;justify-content:center;}
+.card[data-url]{cursor:alias;}
+.card[data-url] .name::after{content:’ ↗’;font-size:11px;opacity:0.4;}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+.card .name{font-size:14px;font-weight:700;color:var(–text);line-height:1.35;}
+.card .desc{font-size:12px;color:var(–dim);margin-top:3px;line-height:1.45;white-space:pre-line;}
+.card .vtag{font-size:11px;font-weight:500;margin-top:4px;color:var(–dim);}
+.card .highlight-tag{font-size:11px;font-weight:700;margin-top:5px;padding:3px 8px;border-radius:5px;display:inline-block;width:fit-content;}
+.card .detail{margin-top:6px;padding-top:6px;font-size:12px;line-height:1.55;white-space:pre-line;display:none;color:var(–dim);}
+.card.expanded .detail{display:block;}
+.card .link-badge{display:inline-block;margin-top:5px;font-size:10px;font-weight:600;padding:3px 7px;border-radius:4px;}
+
+.card-portfolio{background:var(–portfolio-dim);border:1px solid var(–portfolio-border);border-left:3px solid var(–portfolio);} .card-portfolio:hover{background:rgba(5,150,105,0.12);}
+.card-concept{background:var(–concept-dim);border:1px solid var(–concept-border);border-left:3px solid var(–concept);} .card-concept:hover{background:rgba(124,58,237,0.1);} .card-concept .detail{color:var(–concept);}
+.card-explore{background:var(–explore-dim);border:1px solid var(–explore-border);border-left:3px solid var(–explore);} .card-explore:hover{background:rgba(217,119,6,0.1);} .card-explore .detail{color:#92400e;}
+.card-pink{background:var(–pink-dim);border:1px solid var(–pink-border);border-left:3px solid var(–pink);} .card-pink:hover{background:rgba(192,38,211,0.1);}
+.card-teal{background:var(–teal-dim);border:1px solid var(–teal-border);border-left:3px solid var(–teal);} .card-teal:hover{background:rgba(15,118,110,0.1);}
+
+.footer-stats{max-width:1300px;margin:0 auto;padding:24px 40px 52px;display:flex;gap:24px;border-top:1px solid var(–border);}
+.stat{display:flex;align-items:center;gap:10px;} .stat-dot{width:8px;height:8px;border-radius:50%;} .stat-label{font-size:13px;color:var(–dim);} .stat-value{font-size:16px;font-weight:700;}
+.flow-row{margin-bottom:14px;} .flow-inner{display:flex;align-items:center;} .flow-inner .line{flex:1;height:1px;} .flow-inner .text{font-size:12px;color:var(–dim);padding:0 12px;white-space:nowrap;}
+
+.m-pills{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;} .m-pills::-webkit-scrollbar{display:none;}
+.m-pill{flex-shrink:0;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(–border);color:var(–dim);cursor:pointer;transition:all 0.2s;background:transparent;font-family:inherit;white-space:nowrap;}
+.m-pill.active{background:var(–accent-dim);border-color:rgba(8,145,178,0.3);color:var(–accent-text);}
+.m-stage-group{margin-bottom:20px;} .m-stage-header{display:flex;align-items:center;gap:8px;padding:10px 0 8px;border-bottom:1px solid var(–border);margin-bottom:8px;}
+.m-stage-header .icon{font-size:20px;} .m-stage-header .label{font-size:13px;font-weight:600;color:var(–accent-text);}
+.m-row-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:2px 7px;border-radius:3px;margin-bottom:4px;display:inline-block;}
+.m-card-list{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
+
+@media(max-width:840px){
+.hero{padding:40px 20px 32px;} .hero-title{font-size:26px;} .hero-label{font-size:11px;}
+.tabs{padding:10px 16px;gap:6px;} .tab-btn{padding:10px 8px;font-size:12px;} .tab-btn small{font-size:9px;}
+.section{padding:20px 16px;} .thesis-timeline{padding-left:32px;} .thesis-text{font-size:14px;line-height:1.8;} .thesis-year{font-size:14px;}
+.desktop-map{display:none;} .mobile-map{display:block;}
+.footer-stats{padding:16px 16px 40px;gap:12px;flex-wrap:wrap;}
+.card{padding:12px 14px;}
+}
+@media(min-width:841px){.mobile-map{display:none !important;} .desktop-map{display:block !important;}}
+</style>
+
+</head>
+<body>
+<div class="hero"><div class="hero-label">Murex Partners · Jinyoung Park</div><div class="hero-title">Investment <span>Landscape</span> Map</div></div>
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('thesis')">📐 Thesis<small>Evolution</small></button>
+  <button class="tab-btn" onclick="switchTab('physical')">🤖 Physical AI<small>Value Chain</small></button>
+  <button class="tab-btn" onclick="switchTab('digital')">🧠 Agentic AI<small>Value Chain</small></button>
+</div>
+
+<!-- THESIS -->
+
+<div class="section active" id="sec-thesis">
+  <div class="thesis-timeline">
+    <div class="thesis-entry y2026"><div class="thesis-dot"></div><div class="thesis-year">2026</div><div class="thesis-label">Physical AI Infrastructure</div><div class="thesis-text">My investment thesis, <strong>'Physical AI Infrastructure'</strong> focuses on the foundational layers required to deploy AI in the physical world. As robots, autonomous systems, and embodied AI move from lab to production, the critical bottleneck shifts from algorithms to infrastructure — <strong>simulation & world models, middleware & OS, edge compute, system testing & V&V, and cybersecurity</strong> for physical AI. I invest 2–3 years ahead of mainstream adoption into the infrastructure startups that will become deployment prerequisites, at the intersection of software and hardware in regulated enterprise markets.</div></div>
+    <div class="thesis-entry y2024"><div class="thesis-dot"></div><div class="thesis-year">2024</div><div class="thesis-label">AI-Driven Deep Tech Transformation</div><div class="thesis-text">My investment thesis centers on the <strong>transformation of deep tech sectors</strong> including manufacturing, energy, semiconductors, and space, where <strong>traditional software is increasingly replaced or enhanced by AI-driven solutions</strong>. Tasks currently dependent on human labor and expertise, as well as processes relying on conventional software systems, are <strong>rapidly transitioning to AI-powered alternatives</strong>.</div></div>
+    <div class="thesis-entry y2022"><div class="thesis-dot"></div><div class="thesis-year">2022</div><div class="thesis-label">Redefining Humanity</div><div class="thesis-text">My investment thesis, <strong>'Redefining Humanity'</strong> centered on the <strong>transformative potential of AI, robotics, semiconductors, and advanced technologies</strong> — innovations poised to revolutionize industries and <strong>liberate humanity from the constraints of labor</strong>, paving the way for a future defined by creativity and higher purpose.</div></div>
+  </div>
+</div>
+
+<!-- PHYSICAL AI -->
+
+<div class="section" id="sec-physical">
+  <div class="desktop-map">
+    <div class="map-header g7" id="phy-header"><div></div>
+      <div class="chain-stage" onclick="toggleCol('phy',1)"><div class="icon">👁</div><div class="label">Perception
+Sensing</div></div><div class="chain-stage" onclick="toggleCol('phy',2)"><div class="icon">⚡</div><div class="label">Compute
+Processing</div></div><div class="chain-stage" onclick="toggleCol('phy',3)"><div class="icon">🌐</div><div class="label">Spatial Intel
+3D Understanding</div></div><div class="chain-stage" onclick="toggleCol('phy',4)"><div class="icon">🧪</div><div class="label">Physical Intel
+Simulation</div></div><div class="chain-stage" onclick="toggleCol('phy',5)"><div class="icon">⚙️</div><div class="label">Actuation
+Control</div></div><div class="chain-stage" onclick="toggleCol('phy',6)"><div class="icon">🚗</div><div class="label">Autonomy
+Navigation</div></div><div class="chain-stage" onclick="toggleCol('phy',7)"><div class="icon">🏭</div><div class="label">Deployment
+Operations</div></div>
+    </div>
+    <div class="map-row g7 flow-row"><div></div><div style="grid-column:span 7" class="flow-inner"><div class="line" style="background:linear-gradient(90deg,rgba(8,145,178,0.3),rgba(8,145,178,0.05))"></div><div class="text">Physical AI Value Chain →</div><div class="line" style="background:linear-gradient(90deg,rgba(8,145,178,0.05),transparent)"></div></div></div>
+    <div class="map-row g7 row-portfolio phy-row">
+      <div class="row-label"><div class="row-badge" style="color:var(--portfolio);background:var(--portfolio-dim)">PORTFOLIO</div><div class="sub">Invested Companies</div></div>
+      <div class="cell" data-col="1">
+        <div class="card card-portfolio" data-url="https://www.smartradarsystem.com/" onclick="toggleCard(this)"><div class="name">Smart Radar System</div><div class="desc">4D Imaging Radar</div><div class="highlight-tag" style="color:var(--portfolio);background:var(--portfolio-dim);border:1px solid var(--portfolio-border)">IPO (KOSDAQ : 424960)</div></div>
+        <div class="card card-portfolio" data-url="https://www.cso.space/" onclick="toggleCard(this)"><div class="name">Cognitive Space Optics</div><div class="desc">High-Resolution Optical Camera</div></div>
+      </div>
+      <div class="cell" data-col="2"></div>
+      <div class="cell" data-col="3"><div class="card card-portfolio" data-url="https://www.cupix.com/" onclick="toggleCard(this)"><div class="name">Cupix</div><div class="desc">Spatial Intelligence
+(Construction, Datacenter, Energy, etc.)</div></div></div>
+      <div class="cell" data-col="4"><div class="card card-portfolio" data-url="https://solverx.ai/" onclick="toggleCard(this)"><div class="name">SolverX</div><div class="desc">Physics & Engineering Simulation</div><div class="link-badge" style="background:var(--explore-dim);color:var(--explore)">→ World Model</div></div></div>
+      <div class="cell" data-col="5"><div class="card card-portfolio" data-url="https://www.faradaydynamics.com/" onclick="toggleCard(this)"><div class="name">Faraday Dynamics</div><div class="desc">Humanoid Actuator</div></div></div>
+      <div class="cell" data-col="6"><div class="card card-portfolio" data-url="https://www.rideflux.com/" onclick="toggleCard(this)"><div class="name">RideFlux</div><div class="desc">Autonomous Driving</div></div><div class="card card-portfolio" data-url="https://uel.co.kr/" onclick="toggleCard(this)"><div class="name">UEL</div><div class="desc">[Space] Rover</div></div></div>
+      <div class="cell" data-col="7"></div>
+    </div>
+    <div class="map-row g7 row-scouting phy-row">
+      <div class="row-label"><div class="row-badge" style="color:var(--concept);background:var(--concept-dim)">SCOUTING</div><div class="sub">Infra Layers</div></div>
+      <div class="cell" data-col="1"></div>
+      <div class="cell" data-col="2"><div class="card card-concept" onclick="toggleCard(this)"><div class="name">Edge AI Runtime</div><div class="desc">On-device inference optimization & power management</div><div class="detail" style="border-top:1px solid var(--concept-border)">Model compression, inference engines, and energy-aware scheduling for edge deployment</div></div></div>
+      <div class="cell" data-col="3"></div>
+      <div class="cell" data-col="4"><div class="card card-concept" onclick="toggleCard(this)"><div class="name">Synthetic Data & RFM Pipeline</div><div class="desc">Training data generation · annotation · curation for RFMs</div><div class="detail" style="border-top:1px solid var(--concept-border)">Domain-specific data engines for Robotics Foundation Models. Ref: NVIDIA Physical AI Data Factory, RealWorld, Config Intelligence</div></div><div class="card card-concept" onclick="toggleCard(this)"><div class="name">World Model</div><div class="desc">Physics-informed generative simulation · neural scene representation</div><div class="link-badge" style="background:var(--portfolio-dim);color:var(--portfolio)">← SolverX</div><div class="detail" style="border-top:1px solid var(--concept-border)">Learned world models enabling closed-loop sim-to-real transfer for embodied agents</div></div></div>
+      <div class="cell" data-col="5"></div><div class="cell" data-col="6"></div>
+      <div class="cell" data-col="7"><div class="card card-concept" onclick="toggleCard(this)"><div class="name">RobOps & Fleet Orchestration</div><div class="desc">Observability · teleoperation · fleet management</div><div class="detail" style="border-top:1px solid var(--concept-border)">Benchmark: Foxglove ($58M+), InOrbit, Formant</div></div></div>
+    </div>
+    <div class="map-row g7 row-scouting phy-row">
+      <div class="row-label"><div class="row-badge" style="color:var(--explore);background:var(--explore-dim)">SCOUTING</div><div class="sub">Whitespace</div></div>
+      <div class="cell" data-col="1"></div><div class="cell" data-col="2"></div><div class="cell" data-col="3"></div><div class="cell" data-col="4"></div><div class="cell" data-col="5"></div><div class="cell" data-col="6"></div>
+      <div class="cell" data-col="7"><div class="card card-explore" onclick="toggleCard(this)"><div class="name">Robot V&V / Safety Certification</div><div class="desc">Safety case automation · continuous TEVV pipeline</div><div class="detail" style="border-top:1px solid var(--explore-border)">Benchmark: Applied Intuition ($6B+), Foretellix (acq. by Renesas), 3Laws, Apex.AI</div></div><div class="card card-explore" onclick="toggleCard(this)"><div class="name">Physical AI Cybersecurity</div><div class="desc">CPS threat detection · secure-by-design runtime</div><div class="detail" style="border-top:1px solid var(--explore-border)">Driver: EU Cyber Resilience Act, NIST Cybersecurity Framework</div></div></div>
+    </div>
+  </div>
+  <div class="mobile-map" id="phy-mobile"></div>
+</div>
+
+<!-- AGENTIC AI -->
+
+<div class="section" id="sec-digital">
+  <div class="desktop-map">
+    <div class="map-header g7" id="agt-header"><div></div>
+      <div class="chain-stage" onclick="toggleCol('agt',1)"><div class="icon">🖥</div><div class="label">Compute &
+Memory Infra</div></div><div class="chain-stage" onclick="toggleCol('agt',2)"><div class="icon">🔮</div><div class="label">Foundation
+Models</div></div><div class="chain-stage" onclick="toggleCol('agt',3)"><div class="icon">📚</div><div class="label">Context &
+Knowledge Memory</div></div><div class="chain-stage" onclick="toggleCol('agt',4)"><div class="icon">🧩</div><div class="label">Agent Runtime
+& Orchestration</div></div><div class="chain-stage" onclick="toggleCol('agt',5)"><div class="icon">🔌</div><div class="label">Action, Tooling
+& Integrations</div></div><div class="chain-stage" onclick="toggleCol('agt',6)"><div class="icon">🛡️</div><div class="label">Safety, Governance
+& Security</div></div><div class="chain-stage" onclick="toggleCol('agt',7)"><div class="icon">🚀</div><div class="label">Applications
+Vertical AI</div></div>
+    </div>
+    <div class="map-row g7 flow-row"><div></div><div style="grid-column:span 7" class="flow-inner"><div class="line" style="background:linear-gradient(90deg,rgba(192,38,211,0.25),rgba(192,38,211,0.05))"></div><div class="text">Agentic AI Value Chain →</div><div class="line" style="background:linear-gradient(90deg,rgba(192,38,211,0.05),transparent)"></div></div></div>
+    <div class="map-row g7 row-portfolio agt-row">
+      <div class="row-label"><div class="row-badge" style="color:var(--portfolio);background:var(--portfolio-dim)">PORTFOLIO</div><div class="sub">Invested Companies</div></div>
+      <div class="cell" data-col="1"><div class="card card-teal" data-url="https://www.panmnesia.com/" onclick="toggleCard(this)"><div class="name">Panmnesia</div><div class="desc">CXL Switch
+Memory Fabric for AI Inference</div></div><div class="card card-teal" data-url="https://www.ideas2silicon.com/" onclick="toggleCard(this)"><div class="name">Ideas2Silicon</div><div class="desc">Semiconductor IP Design
+AI Accelerator Architecture</div></div></div>
+      <div class="cell" data-col="2"></div>
+      <div class="cell" data-col="3">
+        <div class="card card-pink" data-url="https://www.allganize.ai/" onclick="toggleCard(this)"><div class="name">Allganize</div><div class="desc">Enterprise LLM Platform
+Context & Knowledge Processing</div></div>
+        <div class="card card-pink" data-url="https://www.superb-ai.com/" onclick="toggleCard(this)"><div class="name">SuperbAI</div><div class="desc">Data Labeling & MLOps
+AI Training Data Infrastructure</div></div>
+        <div class="card card-pink" data-url="https://cognica.io/" onclick="toggleCard(this)"><div class="name">Cognica</div><div class="desc">AI-Native Unified DB (UQA)
+Hybrid Search for RAG (BB25)</div></div>
+      </div>
+      <div class="cell" data-col="4"></div>
+      <div class="cell" data-col="5"><div class="card card-teal" data-url="https://www.querypie.com/" onclick="toggleCard(this)"><div class="name">QueryPie</div><div class="desc">Data Access Governance Gateway</div></div></div>
+      <div class="cell" data-col="6"><div class="card card-teal" data-url="https://www.tynapse.com/" onclick="toggleCard(this)"><div class="name">Tynapse</div><div class="desc">AI Agent Runtime
+Trust & Safety Layer</div></div></div>
+      <div class="cell" data-col="7">
+        <div class="card card-pink" data-url="https://www.mckinleyrice.com/" onclick="toggleCard(this)"><div class="name">Mckinleyrice</div><div class="vtag">[HR] Recruiting Platform</div></div>
+        <div class="card card-pink" data-url="https://www.doodlin.co.kr/" onclick="toggleCard(this)"><div class="name">Doodlin</div><div class="vtag">[HR] ATS · TRM Solution</div></div>
+        <div class="card card-pink" data-url="https://www.hopae.com/" onclick="toggleCard(this)"><div class="name">Hopae</div><div class="vtag">[Identity] Decentralized Identifier</div></div>
+        <div class="card card-pink" data-url="https://www.voyagerx.com/" onclick="toggleCard(this)"><div class="name">VoyagerX</div><div class="vtag">[Consumer] AI Services</div></div>
+        <div class="card card-pink" data-url="https://www.amazevr.com/" onclick="toggleCard(this)"><div class="name">Amaze</div><div class="vtag">[K-Culture] K-POP VR Content Studio</div></div>
+        <div class="card card-pink" data-url="https://contentstech.com/" onclick="toggleCard(this)"><div class="name">Contents Technologies</div><div class="vtag">[K-Culture] Music IP/A&L Services</div></div>
+        <div class="card card-pink" data-url="https://cenacle.com/" onclick="toggleCard(this)"><div class="name">Cenacle</div><div class="vtag">[Healthcare] Cloud EMR</div><div class="highlight-tag" style="color:var(--accent-text);background:var(--accent-dim);border:1px solid rgba(8,145,178,0.25)">M&A, NAVER CLOUD</div></div>
+      </div>
+    </div>
+    <div class="map-row g7 row-scouting agt-row">
+      <div class="row-label"><div class="row-badge" style="color:var(--explore);background:var(--explore-dim)">SCOUTING</div><div class="sub">Whitespace</div></div>
+      <div class="cell" data-col="1"><div class="card card-explore" onclick="toggleCard(this)"><div class="name">Agent Memory Architecture</div><div class="desc">CXL/HBF tiering · KV cache hierarchy for 100TB+ context</div><div class="detail" style="border-top:1px solid var(--explore-border)">Next-gen memory for hundreds of concurrent agent models. Synergy with Panmnesia (CXL)</div></div></div>
+      <div class="cell" data-col="2"></div><div class="cell" data-col="3"></div>
+      <div class="cell" data-col="4"><div class="card card-explore" onclick="toggleCard(this)"><div class="name">Agent-Native Inference OS</div><div class="desc">Multi-model serving · KV cache sharing · compute scheduling</div><div class="detail" style="border-top:1px solid var(--explore-border)">OS for concurrent agents — KV cache reuse (11x latency reduction, ICLR 2026 ICaRus). Evolution: vLLM → Agent-native OS</div></div></div>
+      <div class="cell" data-col="5"><div class="card card-explore" onclick="toggleCard(this)"><div class="name">Agent Task Success & Cost Engine</div><div class="desc">Workflow completion rate · cost-per-task optimization</div><div class="detail" style="border-top:1px solid var(--explore-border)">Task-level observability: completion rate, cost-per-task, retry cost. Evolution: LangSmith → Agent-native economics</div></div></div>
+      <div class="cell" data-col="6"></div>
+      <div class="cell" data-col="7"><div class="card card-explore" onclick="toggleCard(this)"><div class="name">Manufacturing & Deep Tech AI</div><div class="desc">AI-driven industrial automation ·
+process optimization agents</div><div class="detail" style="border-top:1px solid var(--explore-border)">AI agents for manufacturing, energy, semiconductors, and space — regulated deep tech verticals where domain expertise creates structural moats</div></div><div class="card card-explore" onclick="toggleCard(this)"><div class="name">K-Culture AI</div><div class="desc">Content, Gaming, and Beauty ·
+Korean cultural IP × AI</div><div class="detail" style="border-top:1px solid var(--explore-border)">AI-native content creation, game development, and beauty-tech — leveraging Korea's global cultural influence as a distribution moat</div></div></div>
+    </div>
+  </div>
+  <div class="mobile-map" id="agt-mobile"></div>
+</div>
+
+<div class="footer-stats">
+  <div class="stat"><div class="stat-dot" style="background:var(--portfolio)"></div><span class="stat-label">Total Portfolio</span><span class="stat-value" style="color:var(--portfolio)">21</span></div>
+  <div class="stat"><div class="stat-dot" style="background:var(--accent)"></div><span class="stat-label">Physical AI</span><span class="stat-value" style="color:var(--accent-text)">7</span></div>
+  <div class="stat"><div class="stat-dot" style="background:var(--pink)"></div><span class="stat-label">Agentic AI</span><span class="stat-value" style="color:var(--pink)">14</span></div>
+  <div class="stat"><div class="stat-dot" style="background:var(--explore)"></div><span class="stat-label">Scouting</span><span class="stat-value" style="color:var(--explore)">11</span></div>
+</div>
+
+<script>
+function switchTab(id){document.querySelectorAll('.tab-btn').forEach((b,i)=>{b.classList.toggle('active',(id==='thesis'&&i===0)||(id==='physical'&&i===1)||(id==='digital'&&i===2));});['thesis','physical','digital'].forEach(s=>{document.getElementById('sec-'+s).classList.toggle('active',s===id);});resetCol('phy');resetCol('agt');}
+function toggleCard(el){const url=el.dataset.url;if(url){window.open(url,'_blank');}else{el.classList.toggle('expanded');}}
+let activeCol={phy:null,agt:null};
+function toggleCol(section,col){const h=document.getElementById(section+'-header'),rows=document.querySelectorAll('.'+section+'-row'),stages=h.querySelectorAll('.chain-stage');if(activeCol[section]===col){resetCol(section);return;}activeCol[section]=col;stages.forEach((s,i)=>s.classList.toggle('active',i+1===col));rows.forEach(row=>{row.classList.add('col-dimmed');row.querySelectorAll('.cell[data-col]').forEach(cell=>{cell.classList.toggle('col-active',parseInt(cell.dataset.col)===col);});});}
+function resetCol(section){activeCol[section]=null;const h=document.getElementById(section+'-header');if(h)h.querySelectorAll('.chain-stage').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.'+section+'-row').forEach(row=>{row.classList.remove('col-dimmed');row.querySelectorAll('.cell').forEach(c=>c.classList.remove('col-active'));});}
+document.addEventListener('click',e=>{if(!e.target.closest('.chain-stage')&&!e.target.closest('.card')&&!e.target.closest('.m-pill')){resetCol('phy');resetCol('agt');}});
+
+const phyData=[{icon:'👁',label:'Perception · Sensing',portfolio:[{name:'Smart Radar System',desc:'4D Imaging Radar',cls:'card-portfolio',url:'https://www.smartradarsystem.com/',tag:'IPO (KOSDAQ : 424960)',tagStyle:'color:var(--portfolio);background:var(--portfolio-dim);border:1px solid var(--portfolio-border)'},{name:'Cognitive Space Optics',desc:'High-Resolution Optical Camera',cls:'card-portfolio',url:'https://www.cso.space/'}],scouting:[]},{icon:'⚡',label:'Compute · Processing',portfolio:[],scouting:[{name:'Edge AI Runtime',desc:'On-device inference optimization & power management',cls:'card-concept'}]},{icon:'🌐',label:'Spatial Intel · 3D',portfolio:[{name:'Cupix',desc:'Spatial Intelligence (Construction, Datacenter, Energy, etc.)',cls:'card-portfolio',url:'https://www.cupix.com/'}],scouting:[]},{icon:'🧪',label:'Physical Intel · Simulation',portfolio:[{name:'SolverX',desc:'Physics & Engineering Simulation',cls:'card-portfolio',url:'https://solverx.ai/',badge:'→ World Model',badgeStyle:'background:var(--explore-dim);color:var(--explore)'}],scouting:[{name:'Synthetic Data & RFM Pipeline',desc:'Training data · annotation · curation for RFMs',cls:'card-concept'},{name:'World Model',desc:'Physics-informed generative simulation',cls:'card-concept',badge:'← SolverX',badgeStyle:'background:var(--portfolio-dim);color:var(--portfolio)'}]},{icon:'⚙️',label:'Actuation · Control',portfolio:[{name:'Faraday Dynamics',desc:'Humanoid Actuator',cls:'card-portfolio',url:'https://www.faradaydynamics.com/'}],scouting:[]},{icon:'🚗',label:'Autonomy · Navigation',portfolio:[{name:'RideFlux',desc:'Autonomous Driving',cls:'card-portfolio',url:'https://www.rideflux.com/'},{name:'UEL',desc:'[Space] Rover',cls:'card-portfolio',url:'https://uel.co.kr/'}],scouting:[]},{icon:'🏭',label:'Deployment · Operations',portfolio:[],scouting:[{name:'RobOps & Fleet Orchestration',desc:'Observability · teleoperation · fleet management',cls:'card-concept'},{name:'Robot V&V / Safety Certification',desc:'Safety case automation · continuous TEVV pipeline',cls:'card-explore'},{name:'Physical AI Cybersecurity',desc:'CPS threat detection · secure-by-design runtime',cls:'card-explore'}]}];
+const agtData=[{icon:'🖥',label:'Compute & Memory Infra',portfolio:[{name:'Panmnesia',desc:'CXL Switch · Memory Fabric',cls:'card-teal',url:'https://www.panmnesia.com/'},{name:'Ideas2Silicon',desc:'Semiconductor IP · AI Accelerator',cls:'card-teal',url:'https://www.ideas2silicon.com/'}],scouting:[{name:'Agent Memory Architecture',desc:'CXL/HBF tiering · KV cache for 100TB+ context',cls:'card-explore'}]},{icon:'🔮',label:'Foundation Models',portfolio:[],scouting:[]},{icon:'📚',label:'Context & Knowledge Memory',portfolio:[{name:'Allganize',desc:'Enterprise LLM · Context & Knowledge',cls:'card-pink',url:'https://www.allganize.ai/'},{name:'SuperbAI',desc:'Data Labeling & MLOps',cls:'card-pink',url:'https://www.superb-ai.com/'},{name:'Cognica',desc:'AI-Native Unified DB · Hybrid Search for RAG',cls:'card-pink',url:'https://cognica.io/'}],scouting:[]},{icon:'🧩',label:'Agent Runtime & Orchestration',portfolio:[],scouting:[{name:'Agent-Native Inference OS',desc:'Multi-model serving · KV cache sharing',cls:'card-explore'}]},{icon:'🔌',label:'Action, Tooling & Integrations',portfolio:[{name:'QueryPie',desc:'Data Access Governance Gateway',cls:'card-teal',url:'https://www.querypie.com/'}],scouting:[{name:'Agent Task Success & Cost Engine',desc:'Workflow completion · cost-per-task',cls:'card-explore'}]},{icon:'🛡️',label:'Safety, Governance & Security',portfolio:[{name:'Tynapse',desc:'AI Agent Runtime · Trust & Safety',cls:'card-teal',url:'https://www.tynapse.com/'}],scouting:[]},{icon:'🚀',label:'Applications · Vertical AI',portfolio:[{name:'Mckinleyrice',desc:'[HR] Recruiting Platform',cls:'card-pink',url:'https://www.mckinleyrice.com/'},{name:'Doodlin',desc:'[HR] ATS · TRM Solution',cls:'card-pink',url:'https://www.doodlin.co.kr/'},{name:'Hopae',desc:'[Identity] Decentralized Identifier',cls:'card-pink',url:'https://www.hopae.com/'},{name:'VoyagerX',desc:'[Consumer] AI Services',cls:'card-pink',url:'https://www.voyagerx.com/'},{name:'Amaze',desc:'[K-Culture] K-POP VR Content Studio',cls:'card-pink',url:'https://www.amazevr.com/'},{name:'Contents Technologies',desc:'[K-Culture] Music IP/A&L Services',cls:'card-pink',url:'https://contentstech.com/'},{name:'Cenacle',desc:'[Healthcare] Cloud EMR',cls:'card-pink',url:'https://cenacle.com/',tag:'M&A, NAVER CLOUD',tagStyle:'color:var(--accent-text);background:var(--accent-dim);border:1px solid rgba(8,145,178,0.25)'}],scouting:[{name:'Manufacturing & Deep Tech AI',desc:'AI-driven industrial automation · process optimization',cls:'card-explore'},{name:'K-Culture AI',desc:'Content, Gaming, and Beauty · Korean cultural IP × AI',cls:'card-explore'}]}];
+window._phyData=phyData;window._agtData=agtData;
+
+function renderMobile(cid,data,fi){const el=document.getElementById(cid);if(!el)return;const fd=fi===-1?data:[data[fi]];let h='<div class="m-pills">';h+=`<button class="m-pill ${fi===-1?'active':''}" onclick="mFilter('${cid}',-1)">All</button>`;data.forEach((d,i)=>{if(d.portfolio.length||d.scouting.length)h+=`<button class="m-pill ${fi===i?'active':''}" onclick="mFilter('${cid}',${i})">${d.icon} ${d.label.split('·')[0].trim()}</button>`;});h+='</div>';fd.forEach(s=>{if(!s.portfolio.length&&!s.scouting.length)return;h+=`<div class="m-stage-group"><div class="m-stage-header"><span class="icon">${s.icon}</span><span class="label">${s.label}</span></div>`;if(s.portfolio.length){h+=`<div class="m-row-tag" style="color:var(--portfolio);background:var(--portfolio-dim)">PORTFOLIO</div><div class="m-card-list">`;s.portfolio.forEach(c=>{h+=`<div class="card ${c.cls}" ${c.url?'data-url="'+c.url+'"':''} onclick="toggleCard(this)"><div class="name">${c.name}</div><div class="desc">${c.desc}</div>`;if(c.badge)h+=`<div class="link-badge" style="${c.badgeStyle}">${c.badge}</div>`;if(c.tag)h+=`<div class="highlight-tag" style="${c.tagStyle}">${c.tag}</div>`;h+='</div>';});h+='</div>';}if(s.scouting.length){h+=`<div class="m-row-tag" style="color:var(--explore);background:var(--explore-dim)">SCOUTING</div><div class="m-card-list">`;s.scouting.forEach(c=>{h+=`<div class="card ${c.cls}" onclick="toggleCard(this)"><div class="name">${c.name}</div><div class="desc">${c.desc}</div>`;if(c.badge)h+=`<div class="link-badge" style="${c.badgeStyle}">${c.badge}</div>`;h+='</div>';});h+='</div>';}h+='</div>';});el.innerHTML=h;}
+function mFilter(cid,idx){renderMobile(cid,cid==='phy-mobile'?window._phyData:window._agtData,idx);}
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.card,.thesis-entry').forEach((c,i)=>{c.style.opacity='0';c.style.transform='translateY(8px)';c.style.transition='opacity 0.4s ease,transform 0.4s ease';setTimeout(()=>{c.style.opacity='1';c.style.transform='translateY(0)';},60+i*20);});renderMobile('phy-mobile',phyData,-1);renderMobile('agt-mobile',agtData,-1);});
+</script>
+
+</body>
+</html>
