@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jinyoung Park — Investment Landscape | Murex Partners</title>
+<title>Murex Partners — Tech Investment Landscape | Murex Partners</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#ffffff;--border:rgba(0,0,0,0.08);--text:#1a1f2e;--dim:#6b7a8d;--accent:#0891b2;--accent-dim:rgba(8,145,178,0.08);--accent-text:#0e7490;--portfolio:#059669;--portfolio-dim:rgba(5,150,105,0.07);--portfolio-border:rgba(5,150,105,0.25);--explore:#d97706;--explore-dim:rgba(217,119,6,0.07);--explore-border:rgba(217,119,6,0.25);--concept:#7c3aed;--concept-dim:rgba(124,58,237,0.06);--concept-border:rgba(124,58,237,0.2);--pink:#c026d3;--pink-dim:rgba(192,38,211,0.06);--pink-border:rgba(192,38,211,0.2);--teal:#0f766e;--teal-dim:rgba(15,118,110,0.06);--teal-border:rgba(15,118,110,0.2);}
@@ -90,16 +90,33 @@
   .m-card-list{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;}
 
   @media(max-width:840px){
-    .hero{padding:40px 20px 32px;} .hero-title{font-size:26px;} .hero-label{font-size:11px;}
-    .tabs{padding:10px 16px;gap:6px;} .tab-btn{padding:10px 8px;font-size:12px;}
-    .section{padding:20px 16px;} .thesis-timeline{padding-left:32px;} .thesis-text{font-size:14px;line-height:1.8;} .thesis-year{font-size:14px;}
+    .hero{padding:36px 20px 28px;} .hero-title{font-size:24px;} .hero-label{font-size:10px;letter-spacing:2px;}
+    .tabs{padding:10px 16px;gap:5px;} .tab-btn{padding:10px 6px;font-size:11px;border-radius:8px;min-height:44px;}
+    .section{padding:20px 16px;}
+    .thesis-timeline{padding-left:30px;}
+    .thesis-timeline::before{left:13px;}
+    .thesis-dot{left:-25px;width:15px;height:15px;}
+    .thesis-dot::after{width:5px;height:5px;}
+    .thesis-text{font-size:14px;line-height:1.75;} .thesis-year{font-size:14px;} .thesis-label{font-size:10px;padding:3px 10px;}
+    .thesis-entry{margin-bottom:36px;}
     .desktop-map{display:none;} .mobile-map{display:block;}
-    .footer-stats{padding:16px 16px 40px;gap:12px;flex-wrap:wrap;}
-    .card{padding:12px 14px;}
+    .footer-stats{padding:16px 16px 40px;gap:10px;flex-wrap:wrap;justify-content:center;}
+    .stat{gap:6px;} .stat-label{font-size:10px;} .stat-value{font-size:13px;} .stat-dot{width:6px;height:6px;}
+    .card{padding:12px 14px;} .card .name{font-size:13px;} .card .desc{font-size:11px;} .card .vtag{font-size:10px;}
     .modal{max-width:100%;border-radius:12px;margin:10px;}
+    .modal-header{padding:20px 20px 12px;} .modal-title{font-size:18px;} .modal-body{padding:0 20px 20px;}
+    .modal-point{font-size:13px;} .modal-desc{font-size:12px;}
+    .m-pill{padding:7px 12px;font-size:11px;}
+    .m-stage-header .label{font-size:12px;}
   }
   @media(min-width:841px){.mobile-map{display:none !important;} .desktop-map{display:block !important;}}
-</style>
+  @media(max-width:380px){
+    .hero-title{font-size:20px;} .hero{padding:28px 16px 24px;}
+    .tabs{padding:8px 12px;gap:4px;} .tab-btn{padding:8px 4px;font-size:10px;}
+    .section{padding:16px 12px;}
+    .footer-stats{gap:8px;} .stat-label{font-size:9px;} .stat-value{font-size:12px;}
+    .m-pill{padding:6px 10px;font-size:10px;}
+  }</style>
 </head>
 <body>
 
@@ -108,7 +125,7 @@
   <div class="modal" id="modal-content"></div>
 </div>
 
-<div class="hero"><div class="hero-label">Murex Partners · Jinyoung Park</div><div class="hero-title">Investment <span>Landscape</span> Map</div></div>
+<div class="hero"><div class="hero-label">Murex Partners</div><div class="hero-title">Tech Investment <span>Landscape</span> Map</div></div>
 <div class="tabs">
   <button class="tab-btn active" onclick="switchTab('thesis')">Thesis</button>
   <button class="tab-btn" onclick="switchTab('physical')">Physical AI</button>
